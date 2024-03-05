@@ -66,28 +66,6 @@ def parse_xml():
             f.write(f"<h1>Número: {numero}</h1>")
             f.write(f"<h2>Nome: {rua}</h2>")
 
-            # Inclusão de todas as imagens
-            f.write("<h3>Imagens</h3>")
-            f.write("<div class='imagens'>")
-            imagens_folder_path = os.path.join(imagens_path, path)
-            atual_folder_path = os.path.join(atual_path, path)
-
-            if os.path.exists(imagens_folder_path):
-                for img_filename in sorted(os.listdir(imagens_folder_path)):
-                    img_path = os.path.join(imagens_folder_path, img_filename)
-                    f.write(f"<img src='{img_path}' alt='Imagem'>")
-
-            if os.path.exists(atual_folder_path):
-                image_counter = 0
-                for img_filename in sorted(os.listdir(atual_folder_path)):
-                    if image_counter == 2:  # Limita a duas fotos
-                        break
-                    img_path = os.path.join(atual_folder_path, img_filename)
-                    f.write(f"<img src='{img_path}' alt='Foto atual'>")
-                    image_counter += 1
-
-            f.write("</div>")
-
             # Processamento das imagens
             imagem_path = root.findall(".//figura")
             for elem in imagem_path:
