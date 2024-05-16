@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  .w3-container
+    h1.w3-text-red= title
+    table.w3-table-all.w3-hoverable
+      thead
+        tr.w3-red
+          th id
+          th Contrato
+          th Data
+          th Preço Contratual
+          th NIPC Entidade
+          th Entidade
+      tbody
+        each Contrato in Contratos
+          tr
+            td
+              a(href='/' + contrato.idcontrato)= contrato.idcontrato
+            td= contrato.objectoContrato
+            td= contrato.dataCelebracaoContrato
+            td= contrato.precoContratual
+            td
+              a(href='/entidades/' + contrato.NIPC_entidade_comunicante)= contrato.NIPC_entidade_comunicante
+            td= contrato.entidade_comunicante
